@@ -39,3 +39,10 @@ main {
 #addTask {
   cursor: grab;
 }
+
+.tasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}

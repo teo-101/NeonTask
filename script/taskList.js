@@ -1,8 +1,6 @@
 const taskList = document.getElementById('taskList');
 const addTaskBtn = document.getElementById('addTask');
-
 let tasks = []; // Used for this session and to update localStorage
-let index;
 
 // Function is called when body loads
 function GetTasks() {
@@ -12,15 +10,12 @@ function GetTasks() {
   if (storedTasks) {
     tasks = JSON.parse(storedTasks);
   }
-  
-  index = tasks.length;
 
-  let i=0;
-
+  let index=0;
   // Updates the list with the data from local storage
   tasks.forEach(task => {
-    taskList.innerHTML += `<li class="tasks" value="${i}">${task}</li>`;
-    i += 1;
+    taskList.innerHTML += `<p class="tasks" value="${index}">${task}</p>`;
+    index += 1;
   });
 
 }
@@ -70,5 +65,5 @@ taskList.addEventListener("click", (event) => {
     location.reload(); // Reload page to avoid UI bugs
   }
   
-})
+});
 
