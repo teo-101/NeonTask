@@ -1,0 +1,41 @@
+@import url('https://fonts.cdnfonts.com/css/space-mono');
+
+* {
+  font-family: 'Space Mono', monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f2f3f4;
+}
+
+#title {
+  font-size: 4rem;
+  color: rgb(0, 23, 52);
+  text-align: center;
+}
+
+#title span {
+  letter-spacing: 2px;
+  color: rgb(21, 119, 205);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#taskList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  color: gray;
+  font-size: 2rem;
+}
+
+#addTask {
+  cursor: grab;
+}
