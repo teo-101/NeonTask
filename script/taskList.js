@@ -27,18 +27,31 @@ function GetTasks() {
 
 // Adds a new task
 addTaskBtn.addEventListener("click", () => {
+  // Create an html object and setting attributes
+  let inputField = document.createElement('input');
+  inputField.setAttribute('id', 'inputField');
+  inputField.setAttribute('type', 'text');
+  inputField.setAttribute('placeholder', 'Enter new task');
 
-  let task = prompt("Enter new task ->");
+  // Making the element a children of the taskList
+  taskList.appendChild(inputField);
+  inputField.focus();
 
-  if (task) {
-    // UI update
-    taskList.innerHTML += `<li class="tasks" value="${index}">${task}</li>`
+  // When enter is pressed the value from the input is added to localStorage and pages is refreshed removing #inputField
+  inputField.addEventListener("keydown", (event) => {
+    if (event.key === 'Enter') {
+      let task = inputField.value.trim();
 
-    // localStorage update
-    tasks[index] = task;
-    index += 1;
-    localStorage.setItem('storedTasks', JSON.stringify(tasks));
-  }
+      if (task !== '') {
+        // localStorage update
+        tasks.push(task);
+        localStorage.setItem('storedTasks', JSON.stringify(tasks));
+
+        // Refresh page to update UI
+        location.reload();
+      }
+    }
+  });
 
 });
 
@@ -53,6 +66,8 @@ taskList.addEventListener("click", (event) => {
     localStorage.setItem('storedTasks', JSON.stringify(tasks)); // localStorage update
 
     event.target.remove(); // Remove from UI
+
+    location.reload(); // Reload page to avoid UI bugs
   }
   
 })
