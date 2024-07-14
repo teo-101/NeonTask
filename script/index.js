@@ -38,7 +38,11 @@ function GetTasks() {
 addTaskBtn.addEventListener("click", () => {
   // Resetting remove mode
   removeMode = false;
-  removeTaskBtn.style.backgroundColor = 'var(--lightBlue)';
+  removeTaskBtn.classList.remove('active');
+
+  // Adding class for styling
+  addTaskBtn.classList.add('active');
+
   // Create an html object and setting attributes
   let inputField = document.createElement('input');
   inputField.setAttribute('id', 'inputField');
@@ -61,6 +65,7 @@ addTaskBtn.addEventListener("click", () => {
 
         // Refresh UI
         inputField.remove();
+        addTaskBtn.classList.remove('active');
         GetTasks();
       }
     }
@@ -70,7 +75,14 @@ addTaskBtn.addEventListener("click", () => {
 // Toggle remove mode
 removeTaskBtn.addEventListener("click", () => {
   removeMode = !removeMode;
-  removeTaskBtn.style.backgroundColor = removeMode ? 'red' : 'var(--lightBlue)';
+  if (removeMode) {
+    removeTaskBtn.classList.add('active');
+    addTaskBtn.classList.remove('active');
+    inputField.remove();
+  }
+  else {
+    removeTaskBtn.classList.remove('active');
+  }
 });
 
 // Actions on tasks
