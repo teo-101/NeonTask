@@ -27,9 +27,9 @@ function GetTasks() {
   tasks.forEach(task => {
     // If task is done add .done css class
     taskList.innerHTML += `
-      <p class="tasks ${task.isDone ? 'done' : ''}" data-index="${task.index}">
+      <li class="tasks ${task.isDone ? 'done' : ''}" data-index="${task.index}">
         ${task.text}
-      </p>`;
+      </li>`;
   });
 
 }

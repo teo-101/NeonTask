@@ -40,11 +40,12 @@ main {
 }
 
 .tasks {
-  display: flex;
+  display: list-item;
   justify-content: center;
   align-items: center;
   margin: 0;
   cursor: pointer;
+  text-align: center;
 }
 
 #inputField {
