@@ -37,6 +37,7 @@ main {
   font-size: 2rem;
   font-family: monospace;
   margin-bottom: 128px;
+  max-width: 80vw;
 }
 
 .tasks {
@@ -46,6 +47,10 @@ main {
   margin: 0;
   cursor: pointer;
   text-align: center;
+  text-wrap: wrap;
+  max-width: 80vw;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 #inputField {
