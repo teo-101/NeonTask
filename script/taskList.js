@@ -1,5 +1,6 @@
 const taskList = document.getElementById('taskList');
 const addTaskBtn = document.getElementById('addTask');
+const removeTaskBtn = document.getElementById('removeTask');
 let tasks = []; // Used for this session and to update localStorage
 
 // Function is called when body loads
@@ -50,10 +51,20 @@ addTaskBtn.addEventListener("click", () => {
 
 });
 
+
+let removeMode = false;
+
+removeTaskBtn.addEventListener("click", () => {
+  if (removeMode)
+    removeMode = false;
+  else
+    removeMode = true;
+});
+
 // Removes a task by clicking on it from the task list
 taskList.addEventListener("click", (event) => {
-  // If its a task
-  if (event.target.classList.contains('tasks')) {
+  // If its a task and remove mode is active
+  if (event.target.classList.contains('tasks') && removeMode === true) {
     let value = parseInt(event.target.getAttribute('value')); // Index of task
 
     tasks.splice(value, 1); // Deletes from array
@@ -62,7 +73,18 @@ taskList.addEventListener("click", (event) => {
 
     event.target.remove(); // Remove from UI
 
-    location.reload(); // Reload page to avoid UI bugs
+  }
+
+  //COMING SOON MARK COMPLETED
+  if (event.target.classList.contains('tasks') && removeMode === false) {
+    let value = parseInt(event.target.getAttribute('value')); // Index of task
+
+    tasks.splice(value, 1); // Deletes from array
+
+    localStorage.setItem('storedTasks', JSON.stringify(tasks)); // localStorage update
+
+    event.target.remove(); // Remove from UI
+
   }
   
 });
