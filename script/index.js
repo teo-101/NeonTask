@@ -2,12 +2,14 @@ const taskList = document.getElementById('taskList');
 const addTaskBtn = document.getElementById('addTask');
 const removeTaskBtn = document.getElementById('removeTask');
 
+// Constructor function
 function Task(index, text, isDone = false) {
   this.index = index;
   this.text = text;
   this.isDone = isDone;
 }
 
+// Array of Task Objects
 let tasks = [];
 let removeMode = false;
 
@@ -20,10 +22,10 @@ function GetTasks() {
     tasks = JSON.parse(storedTasks);
   }
 
-  let index=0;
-  taskList.innerHTML = '';
   // Updates the list with the data from local storage
+  taskList.innerHTML = '';
   tasks.forEach(task => {
+    // If task is done add .done css class
     taskList.innerHTML += `
       <p class="tasks ${task.isDone ? 'done' : ''}" data-index="${task.index}">
         ${task.text}
@@ -32,9 +34,11 @@ function GetTasks() {
 
 }
 
+// Adding new task
 addTaskBtn.addEventListener("click", () => {
+  // Resetting remove mode
   removeMode = false;
-  removeTaskBtn.style.backgroundColor = 'var(--lightBlue';
+  removeTaskBtn.style.backgroundColor = 'var(--lightBlue)';
   // Create an html object and setting attributes
   let inputField = document.createElement('input');
   inputField.setAttribute('id', 'inputField');
@@ -48,14 +52,14 @@ addTaskBtn.addEventListener("click", () => {
   // When enter is pressed the value from the input is added to localStorage and pages is refreshed removing #inputField
   inputField.addEventListener("keydown", (event) => {
     if (event.key === 'Enter') {
-      let task = inputField.value.trim();
+      let task = inputField.value.trim(); // Remove useless spaces
 
       if (task !== '') {
         // localStorage update
-        tasks.push(new Task(tasks.length, task));
+        tasks.push(new Task(tasks.length, task)); // Construct a new obj
         localStorage.setItem('storedTasks', JSON.stringify(tasks));
 
-        // Refresh page to update UI
+        // Refresh UI
         inputField.remove();
         GetTasks();
       }
@@ -63,25 +67,27 @@ addTaskBtn.addEventListener("click", () => {
   });
 });
 
+// Toggle remove mode
 removeTaskBtn.addEventListener("click", () => {
   removeMode = !removeMode;
   removeTaskBtn.style.backgroundColor = removeMode ? 'red' : 'var(--lightBlue)';
 });
 
+// Actions on tasks
 taskList.addEventListener("click", (event) => {
-  if (event.target.classList.contains('tasks') && !event.target.classList.contains('done') && !removeMode) {
+  if (event.target.classList.contains('tasks') && !event.target.classList.contains('done') && !removeMode) { // Mark as done
     const i = parseInt(event.target.getAttribute('data-index'));
     tasks[i].isDone = true;
     localStorage.setItem('storedTasks', JSON.stringify(tasks));
     GetTasks();
   }
-  else if (event.target.classList.contains('tasks') && event.target.classList.contains('done') && !removeMode) {
+  else if (event.target.classList.contains('tasks') && event.target.classList.contains('done') && !removeMode) { // Unmark
     const i = parseInt(event.target.getAttribute('data-index'));
     tasks[i].isDone = false;
     localStorage.setItem('storedTasks', JSON.stringify(tasks));
     GetTasks();
   }
-  else if (event.target.classList.contains('tasks') && removeMode) {
+  else if (event.target.classList.contains('tasks') && removeMode) { // Remove task
     const i = parseInt(event.target.getAttribute('data-index'));
     tasks.splice(i, 1);
     event.target.remove();
