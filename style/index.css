@@ -6,9 +6,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f2f3f4;
-  overflow: hidden;
+  overflow-x: hidden;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
 }
 
 #title {
@@ -36,6 +36,7 @@ main {
   color: var(--darkBlue);
   font-size: 2rem;
   font-family: monospace;
+  margin-bottom: 128px;
 }
 
 .tasks {
@@ -56,12 +57,23 @@ main {
 
 #tools {
   display: flex;
-  justify-content: center;
-  margin-top: 32px;
-  position: absolute;
-  bottom: 2rem;
+  justify-content: center; 
   width: 164px;
-  left: calc(50vw - 82px);
+}
+
+#buttonContainer {
+  width: 100vw;
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,23,52,0.5) 100%);
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  padding: 20px;
+  margin-bottom: 0;
+  backdrop-filter: blur(4px);
 }
 
 .taskButton {
