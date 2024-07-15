@@ -27,7 +27,7 @@ function GetTasks() {
   tasks.forEach(task => {
     // If task is done add .done css class
     taskList.innerHTML += `
-      <li class="tasks ${task.isDone ? 'done' : ''}" data-index="${task.index}">
+      <li class="tasks ${task.isDone ? 'done' : ''}" data-index="${task.index}" title="${task.isDone ? 'Marked as done' : 'Task in progress'}">
         ${task.text}
       </li>`;
   });
