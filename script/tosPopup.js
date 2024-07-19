@@ -7,10 +7,10 @@ btn.addEventListener("click", () => {
 });
 
 function tosVerification() {
-  if (localStorage.getItem('tosAccepted') == 'true') {
-    popup.style.display = 'none';
+  if (localStorage.getItem('tosAccepted') !== 'true') {
+    popup.style.display = 'flex';
   }
   else {
-    popup.style.display = 'flex';
+    popup.style.display = 'none';
   }
 }

@@ -27,6 +27,12 @@
   </header>
 
   <main id="main">
+    <div id="proggressContainer">
+      <div class="line" style="margin-right: 30px;"></div>
+      <h2 id="proggress"><span id="percent">xxx</span><span>%</span></h2>
+      <div class="line" style="margin-left: 30px;"></div>
+    </div>
+
     <ul id="taskList"></ul>
 
     <div id="buttonContainer">
@@ -38,11 +44,16 @@
   </main>
 
   <footer>
-    <p>&copy; 2024 NeonTask. All rights reserved.</p>
-    <a class="links" href="https://github.com/teo-101/NeonTask" target="_blank">Source code</a>
-    <a class="links" href="mailto:test@example.com">Contact owner</a>
-    <a class="links" href="tos/tos.pdf" target="_blank">Terms of Service</a>
-    <p>Version 1.0</p>
+    <div id="info">
+      <p id="copy">&copy; 2024 NeonTask. All rights reserved.</p>
+      <p id="ver">Version 1.0</p>
+    </div>
+
+    <div id="linkContainer">
+      <a class="links" href="https://github.com/teo-101/NeonTask" target="_blank" title="Go to Github repository">Source code</a>
+      <a class="links" href="mailto:test@example.com" title="Send an email">Contact owner</a>
+      <a class="links" href="tos/tos.pdf" target="_blank" title="Read the full TOS">Terms of Service</a>
+    </div>
   </footer>
 
   <script src="script/index.js"></script>

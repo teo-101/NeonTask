@@ -1,6 +1,7 @@
 const taskList = document.getElementById('taskList');
 const addTaskBtn = document.getElementById('addTask');
 const removeTaskBtn = document.getElementById('removeTask');
+const progressPercent = document.getElementById('percent');
 
 // Constructor function
 function Task(index, text, isDone = false) {
@@ -12,6 +13,12 @@ function Task(index, text, isDone = false) {
 // Array of Task Objects
 let tasks = [];
 let removeMode = false;
+let completeTasks;
+
+function updateCompletion() {
+  let percent = (completeTasks / tasks.length) * 100;
+  progressPercent.innerText = parseInt(percent);
+}
 
 // Function is called when body loads
 function GetTasks() {
@@ -24,14 +31,19 @@ function GetTasks() {
 
   // Updates the list with the data from local storage
   taskList.innerHTML = '';
+  completeTasks = 0;
   tasks.forEach(task => {
     // If task is done add .done css class
     taskList.innerHTML += `
       <li class="tasks ${task.isDone ? 'done' : ''}" data-index="${task.index}" title="${task.isDone ? 'Marked as done' : 'Task in progress'}">
         ${task.text}
       </li>`;
-  });
 
+    if (task.isDone) {
+      completeTasks += 1;
+    }
+  });
+  updateCompletion();
 }
 
 // Adding new task
@@ -90,6 +102,7 @@ removeTaskBtn.addEventListener("click", () => {
     else {
       removeTaskBtn.classList.remove('active');
     }
+    GetTasks();
   }
 });
 

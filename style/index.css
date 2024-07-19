@@ -120,7 +120,37 @@ footer {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 15px;
+  padding: 25px;
+  color: var(--darkBlue);
+}
+
+footer #info {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+#copy {
+  margin-bottom: 10px!important;
+}
+
+#info p {
+  margin: 0;
+}
+
+
+#linkCOntainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+footer div .links {
+  margin-right: 15px;
 }
 
 .links {
@@ -146,7 +176,7 @@ footer {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 999;
@@ -182,4 +212,28 @@ footer {
     cursor: pointer;
     color: var(--mainBlue);
   }
+}
+
+#proggressContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#proggress {
+  color: var(--mainBlue);
+  font-size: 2.5rem;
+  margin: 0;
+  transition: all ease-in-out 0.2;
+}
+
+#proggress span {
+  margin: 0 0 0 3px;
+}
+
+.line {
+  width: 25vw;
+  height: 2.2px;
+  background-color: var(--lightBlue);
+  border-radius: 5px;
 }
