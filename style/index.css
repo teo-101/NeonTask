@@ -36,7 +36,6 @@ main {
   color: var(--darkBlue);
   font-size: 2rem;
   font-family: monospace;
-  margin-bottom: 128px;
   max-width: 80vw;
 }
 
@@ -63,23 +62,24 @@ main {
 
 #tools {
   display: flex;
-  justify-content: center; 
-  width: 164px;
+  align-items: center;
+  flex-direction: column;
+  width: fit-content;
+  height: 164px;
 }
 
 #buttonContainer {
-  width: 100vw;
-  background: rgb(255,255,255);
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,23,52,0.5) 100%);
-  position: fixed;
-  bottom: 0;
+  width: 2vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   height: fit-content;
-  padding: 20px;
+  padding: 10px;
   margin-bottom: 0;
-  backdrop-filter: blur(4px);
+  position: fixed;
+  right: 20px;
+  top: calc(50% - 82px);
 }
 
 .taskButton {
@@ -100,7 +100,7 @@ main {
 }
 
 .taskButton:first-of-type {
-  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .done {
@@ -112,4 +112,28 @@ main {
 .active {
   background-color: var(--darkBlue);
   scale: 1.2;
+}
+
+footer {
+  margin-top: 5vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.links {
+  font-size: 1.2rem;
+  color: var(--mainBlue);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.links:visited {
+  all: none;
+}
+
+.links:last-of-type {
+  margin-bottom: 0;
 }
