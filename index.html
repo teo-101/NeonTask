@@ -8,7 +8,20 @@
   <link rel="stylesheet" href="style/global.css">
   <title>NeonTask</title>
 </head>
-<body onload="GetTasks()">
+<body onload="GetTasks(); tosVerification();">
+  <div id="tos-popup" class="tos-popup">
+    <div class="tos-content">
+      <div class="tos-header">Terms of Service</div>
+        <div class="tos-body">
+            <p>Welcome to NeonTask. Before using our website, please read and agree to our Terms of Service.</p>
+            <p>Read the full <a href="tos/tos.pdf" target="_blank">Terms of Service</a>.</p>
+        </div>
+
+        <div class="tos-footer">
+            <button id="agree-button">I Agree</button>
+        </div>
+    </div>
+  </div>
   <header>
     <h1 id="title"><span>NE0N</span>Task</h1>
   </header>
@@ -28,11 +41,11 @@
     <p>&copy; 2024 NeonTask. All rights reserved.</p>
     <a class="links" href="https://github.com/teo-101/NeonTask" target="_blank">Source code</a>
     <a class="links" href="mailto:test@example.com">Contact owner</a>
-    <a class="links" onclick="">Terms of Service</a> <!--COMING SOON TOS POPUP-->
+    <a class="links" href="tos/tos.pdf" target="_blank">Terms of Service</a>
     <p>Version 1.0</p>
   </footer>
 
   <script src="script/index.js"></script>
-  <script src="script/toolbarPos.js"></script>
+  <script src="script/tosPopup.js"></script>
 </body>
 </html>

@@ -36,77 +36,89 @@ function GetTasks() {
 
 // Adding new task
 addTaskBtn.addEventListener("click", () => {
-  // Resetting remove mode
-  removeMode = false;
-  removeTaskBtn.classList.remove('active');
+  tosVerification();
+  let tos = localStorage.getItem('tosAccepted').toString();
+  if (tos == 'true') {
+    // Resetting remove mode
+    removeMode = false;
+    removeTaskBtn.classList.remove('active');
 
-  // Adding class for styling
-  addTaskBtn.classList.add('active');
+    // Adding class for styling
+    addTaskBtn.classList.add('active');
 
-  // Create an html object and setting attributes
-  let inputField = document.createElement('input');
-  inputField.setAttribute('id', 'inputField');
-  inputField.setAttribute('type', 'text');
-  inputField.setAttribute('placeholder', 'Enter new task');
+    // Create an html object and setting attributes
+    let inputField = document.createElement('input');
+    inputField.setAttribute('id', 'inputField');
+    inputField.setAttribute('type', 'text');
+    inputField.setAttribute('placeholder', 'Enter new task');
 
-  // Making the element a children of the taskList
-  taskList.appendChild(inputField);
-  inputField.focus();
+    // Making the element a children of the taskList
+    taskList.appendChild(inputField);
+    inputField.focus();
 
-  // When enter is pressed the value from the input is added to localStorage and pages is refreshed removing #inputField
-  inputField.addEventListener("keydown", (event) => {
-    if (event.key === 'Enter') {
-      let task = inputField.value.trim(); // Remove useless spaces
+    // When enter is pressed the value from the input is added to localStorage and pages is refreshed removing #inputField
+    inputField.addEventListener("keydown", (event) => {
+      if (event.key === 'Enter') {
+        let task = inputField.value.trim(); // Remove useless spaces
 
-      if (task !== '') {
-        // localStorage update
-        tasks.push(new Task(tasks.length, task)); // Construct a new obj
-        localStorage.setItem('storedTasks', JSON.stringify(tasks));
+        if (task !== '') {
+          // localStorage update
+          tasks.push(new Task(tasks.length, task)); // Construct a new obj
+          localStorage.setItem('storedTasks', JSON.stringify(tasks));
 
-        // Refresh UI
-        inputField.remove();
-        addTaskBtn.classList.remove('active');
-        GetTasks();
+          // Refresh UI
+          inputField.remove();
+          addTaskBtn.classList.remove('active');
+          GetTasks();
+        }
       }
-    }
-  });
+    });
+  }
 });
 
 // Toggle remove mode
 removeTaskBtn.addEventListener("click", () => {
-  removeMode = !removeMode;
-  if (removeMode) {
-    removeTaskBtn.classList.add('active');
-    addTaskBtn.classList.remove('active');
-    inputField.remove();
-  }
-  else {
-    removeTaskBtn.classList.remove('active');
+  tosVerification();
+  let tos = localStorage.getItem('tosAccepted').toString();
+  if (tos == 'true') {
+    removeMode = !removeMode;
+    if (removeMode) {
+      removeTaskBtn.classList.add('active');
+      addTaskBtn.classList.remove('active');
+      inputField.remove();
+    }
+    else {
+      removeTaskBtn.classList.remove('active');
+    }
   }
 });
 
 // Actions on tasks
 taskList.addEventListener("click", (event) => {
-  if (event.target.classList.contains('tasks') && !event.target.classList.contains('done') && !removeMode) { // Mark as done
-    const i = parseInt(event.target.getAttribute('data-index'));
-    tasks[i].isDone = true;
-    localStorage.setItem('storedTasks', JSON.stringify(tasks));
-    GetTasks();
-  }
-  else if (event.target.classList.contains('tasks') && event.target.classList.contains('done') && !removeMode) { // Unmark
-    const i = parseInt(event.target.getAttribute('data-index'));
-    tasks[i].isDone = false;
-    localStorage.setItem('storedTasks', JSON.stringify(tasks));
-    GetTasks();
-  }
-  else if (event.target.classList.contains('tasks') && removeMode) { // Remove task
-    const i = parseInt(event.target.getAttribute('data-index'));
-    tasks.splice(i, 1);
-    event.target.remove();
-    tasks.forEach((task, index) => {
-      task.index = index;
-    });
-    localStorage.setItem('storedTasks', JSON.stringify(tasks));
-    GetTasks();
+  tosVerification();
+  let tos = localStorage.getItem('tosAccepted').toString();
+  if (tos == 'true') {
+    if (event.target.classList.contains('tasks') && !event.target.classList.contains('done') && !removeMode) { // Mark as done
+      const i = parseInt(event.target.getAttribute('data-index'));
+      tasks[i].isDone = true;
+      localStorage.setItem('storedTasks', JSON.stringify(tasks));
+      GetTasks();
+    }
+    else if (event.target.classList.contains('tasks') && event.target.classList.contains('done') && !removeMode) { // Unmark
+      const i = parseInt(event.target.getAttribute('data-index'));
+      tasks[i].isDone = false;
+      localStorage.setItem('storedTasks', JSON.stringify(tasks));
+      GetTasks();
+    }
+    else if (event.target.classList.contains('tasks') && removeMode) { // Remove task
+      const i = parseInt(event.target.getAttribute('data-index'));
+      tasks.splice(i, 1);
+      event.target.remove();
+      tasks.forEach((task, index) => {
+        task.index = index;
+      });
+      localStorage.setItem('storedTasks', JSON.stringify(tasks));
+      GetTasks();
+    }
   }
 });

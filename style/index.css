@@ -50,6 +50,7 @@ main {
   max-width: 80vw;
   word-wrap: break-word;
   hyphens: auto;
+  z-index: 1;
 }
 
 #inputField {
@@ -115,7 +116,7 @@ main {
 }
 
 footer {
-  margin-top: 5vh;
+  margin-top: 10vh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -136,4 +137,49 @@ footer {
 
 .links:last-of-type {
   margin-bottom: 0;
+}
+
+.tos-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+
+  .tos-content {
+    background: white;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .tos-header {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--mainBlue)
+  }
+
+  .tos-body {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+  }
+
+  .tos-footer {
+    text-align: right;
+  }
+
+  .tos-footer button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--mainBlue);
+  }
 }
