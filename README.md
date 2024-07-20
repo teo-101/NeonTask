@@ -30,5 +30,7 @@ In the making of this little project I used the following git commands:
     - Switch branch: ``git checkout <BRANCH_NAME>``
     - Creating a new branch and swithing to it: ``git checkout -b <BRANCH_NAME>``
     - Merging: ``git merge <BRANCH1>`` (merges the _BRANCH1_ into the current branch). If i am in the main branch and i run the command it merges BRANCH1 into main.
+    - Deleting local: ``git branch -d <BRANCH_NAME>``
+    - Deleting remote: ``git branch -D <BRANCH_NAME>``
 
 __Git documentation: https://git-scm.com/doc.__
