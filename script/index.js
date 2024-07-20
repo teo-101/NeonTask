@@ -13,6 +13,7 @@ function Task(index, text, isDone = false) {
 // Array of Task Objects
 let tasks = [];
 let removeMode = false;
+let addMode = false;
 let completeTasks;
 
 function updateCompletion() {
@@ -55,18 +56,32 @@ addTaskBtn.addEventListener("click", () => {
     removeMode = false;
     removeTaskBtn.classList.remove('active');
 
-    // Adding class for styling
-    addTaskBtn.classList.add('active');
+    addMode = !addMode;
 
-    // Create an html object and setting attributes
-    let inputField = document.createElement('textarea');
-    inputField.setAttribute('id', 'inputField');
-    inputField.setAttribute('type', 'text');
-    inputField.setAttribute('placeholder', 'Enter new task');
+    if (addMode) {
+      // Adding class for styling
+      addTaskBtn.classList.add('active');
 
-    // Making the element a children of the taskList
-    taskList.appendChild(inputField);
-    inputField.focus();
+      // Create an html object and setting attributes
+      let inputField = document.createElement('textarea');
+      inputField.setAttribute('id', 'inputField');
+      inputField.setAttribute('type', 'text');
+      inputField.setAttribute('placeholder', 'Enter new task');
+
+      // Making the element a children of the taskList
+      taskList.appendChild(inputField);
+      inputField.focus();
+    }
+    else {
+      inputField.remove();
+      addTaskBtn.classList.remove('active');
+    }
+
+    // Automaticlly resizes the height of the textarea for better vision over the task you are entering
+    inputField.addEventListener('input', () => {
+      inputField.style.height = 'auto';
+      inputField.style.height = inputField.scrollHeight + 'px';
+    });
 
     // When enter is pressed the value from the input is added to localStorage and pages is refreshed removing #inputField
     inputField.addEventListener("keydown", (event) => {
@@ -81,6 +96,7 @@ addTaskBtn.addEventListener("click", () => {
           // Refresh UI
           inputField.remove();
           addTaskBtn.classList.remove('active');
+          addMode = !addMode;
           GetTasks();
         }
       }
