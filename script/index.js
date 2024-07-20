@@ -59,7 +59,7 @@ addTaskBtn.addEventListener("click", () => {
     addTaskBtn.classList.add('active');
 
     // Create an html object and setting attributes
-    let inputField = document.createElement('input');
+    let inputField = document.createElement('textarea');
     inputField.setAttribute('id', 'inputField');
     inputField.setAttribute('type', 'text');
     inputField.setAttribute('placeholder', 'Enter new task');

@@ -54,11 +54,20 @@ main {
 }
 
 #inputField {
-  width: 15rem;
+  width: 30vw;
   text-align: center;
-  height: 1.5rem;
-  border-radius: 8px;
-  border: 2px soild var(--mainBlue) !important;
+  height: fit-content;
+  resize: none;
+  flex-wrap: wrap;
+  word-break: break-all;
+  text-align: center;
+  border: 3px solid var(--lightBlue);
+  background-color: #f2f3f4;
+  font-size: 1rem;
+}
+
+#inputField:hover {
+  border: 3px solid var(--darkBlue);
 }
 
 #tools {
@@ -86,13 +95,12 @@ main {
 .taskButton {
   cursor: grab;
   background-color: var(--lightBlue);
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: 0.3s ease-in-out;
 }
 
