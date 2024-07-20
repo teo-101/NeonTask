@@ -245,3 +245,20 @@ footer div .links {
   background-color: var(--lightBlue);
   border-radius: 5px;
 }
+
+#dropdownContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#dropdown {
+  width: 10vw;
+  height: 5vh;
+  background-color: #f2f3f4;
+  text-align: center;
+  border: 2.2px solid var(--lightBlue);
+}
+
+option {
+  background-color: #f2f3f4;
+}
