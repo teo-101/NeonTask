@@ -295,4 +295,21 @@ option {
   .taskButton:first-of-type {
     margin-bottom: 5px;
   }
+
+  .imgWrapper {
+    display: none!important;
+  }
 }
+
+#container {
+  display: flex;
+  flex-direction: row;
+}
+
+.imgWrapper {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
